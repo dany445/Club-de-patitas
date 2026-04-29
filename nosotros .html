@@ -1,0 +1,213 @@
+<!<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Sobre Nosotros</title>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        
+        <header>
+            
+            <input type="checkbox" name="" id="toggler"/>
+            <label for="toggler" class="fas fa-bars"></label>
+            
+            <a href="#" class="logo">Club de Patitas <span>
+🐾</span></a>
+            
+            <nav class="navbar">
+                <a href="index.html">Inicio</a>
+                <a href="nosotros .html">Sobre Nosotros</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="promociones.html">Promociones</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            
+            
+        </header>
+        
+        <section class="about"id="about">
+            <h1 class="heading"><span> Sobre </span> Nosotros </h1>
+            <div class="row">
+                <div class="video-container">
+                    <video src="imagenes/video.mp4" loop autoplay muted ></video>
+                </div>
+                
+                <div class="content">
+                    <h3>¿Por qué elegirnos?</h3>
+                    <p>En Club de Patitas nos dedicamos al cuidado de mascotas, brindándoles atención, seguridad y cariño en todo momento. Nuestro objetivo es que cada mascota se sienta cómoda y feliz mientras sus dueños realizan sus actividades con tranquilidad.</p>
+                    <p>Nos enfocamos en ofrecer un servicio responsable y confiable, adaptándonos a las necesidades de cada mascota para garantizar su bienestar.</p>
+
+<input type="checkbox" id="ver-mas">
+<label for="ver-mas" class="btn">Leer más</label>
+
+<div class="extra-texto">
+    <h3>Misión</h3>
+    <p>
+        Brindar cuidado y atención de calidad a las mascotas, asegurando 
+su bienestar, seguridad y felicidad mientras sus dueños realizan sus 
+actividades con tranquilidad.
+    </p>
+    <h3>Visión</h3>
+    <p>Ser un servicio reconocido por ofrecer cuidado responsable y 
+confiable para las mascotas, destacando por nuestro compromiso, 
+amor por los animales y atención personalizada.</p>
+<h3>Valores</h3>
+<p>
+  <h1>Responsabilidad</h1><p>cuidamos cada mascota con compromiso y 
+dedicación.</p>
+  <h1>Amor por los animales</h1> <p>tratamos a cada mascota con cariño y 
+respeto.</p>
+  <h1>Confianza</h1><p>buscamos que los dueños se sientan seguros con 
+nuestro servicio.</p>
+<h1>Compromiso</h1><p>nos esforzamos por brindar el mejor cuidado 
+posible.</p>
+</p>
+</div>
+            
+        <section class="review" id="review">
+
+    <h1 class="heading"> Opiniones de <span>Clientes</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Excelente servicio, muy recomendados.</p>
+            <div class="user">
+                <img src="imagenes/pic-1.png">
+                <div>
+                    <h3>Juan</h3>
+                    <span>Cliente feliz</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="form-review">
+        <h2>Deja tu reseña</h2>
+
+        <form id="formResena">
+            <input type="text" id="nombreCliente" placeholder="Tu nombre" required>
+
+            <!-- ESTRELLAS -->
+            <div class="rating">
+                <i class="fas fa-star" data-value="1"></i>
+                <i class="fas fa-star" data-value="2"></i>
+                <i class="fas fa-star" data-value="3"></i>
+                <i class="fas fa-star" data-value="4"></i>
+                <i class="fas fa-star" data-value="5"></i>
+            </div>
+
+            <textarea id="comentarioCliente" placeholder="Escribe tu reseña" required></textarea>
+
+            <button type="submit" class="btn">Enviar reseña</button>
+        </form>
+    </div>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    let estrellas = document.querySelectorAll(".rating i");
+    let valorSeleccionado = 0;
+
+    estrellas.forEach((star, index) => {
+        star.addEventListener("click", function(){
+
+            valorSeleccionado = index + 1;
+
+            estrellas.forEach(s => s.classList.remove("active"));
+
+            for(let i = 0; i < valorSeleccionado; i++){
+                estrellas[i].classList.add("active");
+            }
+        });
+    });
+
+    document.getElementById("formResena").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        let nombre = document.getElementById("nombreCliente").value;
+        let comentario = document.getElementById("comentarioCliente").value;
+
+        if(valorSeleccionado === 0){
+            alert("Selecciona una calificación");
+            return;
+        }
+
+        let contenedor = document.querySelector(".box-container");
+
+        let estrellasHTML = "";
+        for(let i = 0; i < valorSeleccionado; i++){
+            estrellasHTML += '<i class="fas fa-star"></i>';
+        }
+
+        let nuevaResena = document.createElement("div");
+        nuevaResena.classList.add("box");
+
+        nuevaResena.innerHTML = `
+            <div class="stars">${estrellasHTML}</div>
+            <p>${comentario}</p>
+            <div class="user">
+                <img src="imagenes/pic-1.png">
+                <div>
+                    <h3>${nombre}</h3>
+                    <span>Cliente</span>
+                </div>
+            </div>
+        `;
+
+        contenedor.appendChild(nuevaResena);
+
+        document.getElementById("formResena").reset();
+        estrellas.forEach(s => s.classList.remove("active"));
+        valorSeleccionado = 0;
+    });
+
+});
+</script>
+
+    
+
+
+        
+        <section class="icons-container">
+            
+            <div class="icons">
+                <img src="imagenes/icon-1.jpg" alt="" />
+                <div class="info">
+                    <h3>Tarjeta</h3>
+                    <span>Pago con tarjeta de crédito o débito</span>
+                </div>
+            </div>
+            
+            <div class="icons">
+                <img src="imagenes/icon-2.jpg" alt="" />
+                <div class="info">
+                    <h3>Banco</h3>
+                    <span>Transferencia bancaria</span>
+                </div>
+            </div>
+            
+            <div class="icons">
+                <img src="imagenes/icon-3.jpg" alt="" />
+                <div class="info">
+                    <h3>Efectivo</h3>
+                    <span>Pago directo en efectivo</span>
+                </div>
+            </div>
+            
+        </section>
+    </body>
+</html>
+
