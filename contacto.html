@@ -1,0 +1,133 @@
+<!<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Sobre Nosotros</title>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        
+        
+        <header>
+            
+            <input type="checkbox" name="" id="toggler"/>
+            <label for="toggler" class="fas fa-bars"></label>
+            
+            <a href="#" class="logo">Club de Patitas <span>🐾</span></a>
+            
+            <nav class="navbar">
+                <a href="index.html">Inicio</a>
+                <a href="nosotros .html">Sobre Nosotros</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="promociones.html">Promociones</a>
+                <a href="Contacto">Contacto</a>
+            </nav>
+            
+            
+        </header>
+        
+        
+        <section class="products" id="products">
+            <h1 class="heading">Contacto</h1>
+        </section>
+        
+        
+        
+        
+<div class="contacto-container">
+
+    <form class="formulario" onsubmit="enviarWhatsApp(event)">
+        <input type="text" id="nombre" placeholder="Nombre completo" required>
+        <input type="email" id="correo" placeholder="Correo electrónico" required>
+        <input type="tel" id="telefono" placeholder="Teléfono" required>
+
+        <select id="servicio" required>
+            <option value="">Selecciona un servicio</option>
+            <option>Asesoría virtual</option>
+            <option>Recordatorios inteligentes</option>
+            <option>Venta de productos</option>
+            <option>Promocion semanal</option>
+            <option>Promocion mensual</option>
+            <option>Promocion anual</option>
+        </select>
+
+        <textarea id="mensaje" placeholder="Escribe tu mensaje..." rows="5"></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    
+
+</div>
+
+<script>
+function enviarWhatsApp(e) {
+    e.preventDefault();
+
+    let nombre = document.getElementById("nombre").value;
+    let correo = document.getElementById("correo").value;
+    let telefono = document.getElementById("telefono").value;
+    let servicio = document.getElementById("servicio").value;
+    let mensaje = document.getElementById("mensaje").value;
+
+    let texto = `Hola, quiero información:
+Nombre: ${nombre}
+Correo: ${correo}
+Teléfono: ${telefono}
+Servicio: ${servicio}
+Mensaje: ${mensaje}`;
+
+    let numero = "528994196757"; // tu número
+
+    let url = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(texto)}`;
+
+    window.location.href = url;
+}
+</script>
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- LOGO / INFO -->
+        <div class="footer-box">
+            <h2>🐾 Club de Patitas</h2>
+            <p>
+                Cuidamos a tu mascota con amor y profesionalismo.
+            </p>
+
+            <div class="redes">
+    <a href="#"><img src="imagenes/img1.jpg" alt="Facebook"></a>
+    <a href="#"><img src="imagenes/img2.jpg" alt="Instagram"></a>
+    <a href="#"><img src="imagenes/img3.jpg" alt="Correo"></a>
+</div>
+</div>
+
+        <!-- HORARIO -->
+        <div class="footer-box">
+            <h3>Horario</h3>
+            <p>Lunes - Viernes: 10:00 a 20:00</p>
+            <p>Sábado: 10:00 a 20:00</p>
+            <p>Domingo: 10:00 a 20:00</p>
+        </div>
+
+        <!-- CONTACTO -->
+        <div class="footer-box">
+            <h3>Contacto</h3>
+            <p>📞 899 123 4567</p>
+            <p>📧 contacto@clubdepatitas.com</p>
+            <p>📍 Reynosa, Tamaulipas</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Club de Patitas | Todos los derechos reservados</p>
+    </div>
+
+</footer>
+
+</body>
+</html>

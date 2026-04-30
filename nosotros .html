@@ -1,0 +1,201 @@
+<!<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Sobre Nosotros</title>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        
+        <header>
+            
+            <input type="checkbox" name="" id="toggler"/>
+            <label for="toggler" class="fas fa-bars"></label>
+            
+            <a href="#" class="logo">Club de Patitas <span>
+🐾</span></a>
+            
+            <nav class="navbar">
+                <a href="index.html">Inicio</a>
+                <a href="nosotros .html">Sobre Nosotros</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="promociones.html">Promociones</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            
+            
+        </header>
+        
+        <section class="about"id="about">
+            <h1 class="heading"><span> Sobre </span> Nosotros </h1>
+            <div class="row">
+                <div class="video-container">
+                    <video src="imagenes/video.mp4" loop autoplay muted ></video>
+                </div>
+                
+                <div class="content">
+                    <h3>¿Por qué elegirnos?</h3>
+                    <p>En Club de Patitas ofrecemos atención práctica y confiable que facilita el cuidado de las mascotas y brinda tranquilidad a sus dueños.
+<p>Contamos con asesoría virtual, donde proporcionamos orientación personalizada mediante videollamadas o chat sobre el cuidado, alimentación, comportamiento y entrenamiento. Además, ofrecemos recordatorios inteligentes que informan sobre vacunas, horarios de alimentación, citas veterinarias y otras necesidades importantes.</p>
+<p>También disponemos de venta de productos, incluyendo alimentos y accesorios con servicio de entrega a domicilio para mayor comodidad.</p>
+                    
+<input type="checkbox" id="ver-mas">
+<label for="ver-mas" class="btn">Leer más</label>
+
+<div class="extra-texto">
+    <h3>Misión</h3>
+    <p>
+        Brindar servicios que apoyen el cuidado y bienestar de las mascotas mediante asesoría virtual, recordatorios inteligentes y acceso a productos, facilitando a los dueños una atención responsable.
+    </p>
+    <h3>Visión</h3>
+    <p>Ser una empresa reconocida por su compromiso y confianza en el cuidado de las mascotas, contribuyendo a la tranquilidad de sus dueños.
+    </p>
+<h3>Valores</h3>
+<p>
+  <h1>Responsabilidad</h1><p>Buscamos cumplir de manera puntual con cada servicio.</p>
+  <h1>Respeto</h1> <p>Valoramos las necesidades de las mascotas y la confianza de sus dueños.</p>
+  <h1>Confianza</h1><p>Trabajamos para generar seguridad en nuestros servicios..</p>
+<h1>Compromiso</h1><p>Nos esforzamos por apoyar el bienestar de las mascotas y sus dueños.</p>
+<h1>Honestidad</h1><p>Brindamos información clara y segura en nuestras recomendaciones.</p>
+</p>
+</div>
+            
+        <section class="review" id="review">
+
+    <h1 class="heading"> Opiniones de <span>Clientes</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Excelente servicio, muy recomendados.</p>
+            <div class="user">
+                <img src="imagenes/pic-1.png">
+                <div>
+                    <h3>Juan</h3>
+                    <span>Cliente feliz</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="form-review">
+        <h2>Deja tu reseña</h2>
+
+        <form id="formResena">
+            <input type="text" id="nombreCliente" placeholder="Tu nombre" required>
+
+            <!-- ESTRELLAS -->
+            <div class="rating">
+                <i class="fas fa-star" data-value="1"></i>
+                <i class="fas fa-star" data-value="2"></i>
+                <i class="fas fa-star" data-value="3"></i>
+                <i class="fas fa-star" data-value="4"></i>
+                <i class="fas fa-star" data-value="5"></i>
+            </div>
+
+            <textarea id="comentarioCliente" placeholder="Escribe tu reseña" required></textarea>
+
+            <button type="submit" class="btn">Enviar reseña</button>
+        </form>
+    </div>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    let estrellas = document.querySelectorAll(".rating i");
+    let valorSeleccionado = 0;
+
+    estrellas.forEach((star, index) => {
+        star.addEventListener("click", function(){
+
+            valorSeleccionado = index + 1;
+
+            estrellas.forEach(s => s.classList.remove("active"));
+
+            for(let i = 0; i < valorSeleccionado; i++){
+                estrellas[i].classList.add("active");
+            }
+        });
+    });
+
+    document.getElementById("formResena").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        let nombre = document.getElementById("nombreCliente").value;
+        let comentario = document.getElementById("comentarioCliente").value;
+
+        if(valorSeleccionado === 0){
+            alert("Selecciona una calificación");
+            return;
+        }
+
+        let contenedor = document.querySelector(".box-container");
+
+        let estrellasHTML = "";
+        for(let i = 0; i < valorSeleccionado; i++){
+            estrellasHTML += '<i class="fas fa-star"></i>';
+        }
+
+        let nuevaResena = document.createElement("div");
+        nuevaResena.classList.add("box");
+
+        nuevaResena.innerHTML = `
+            <div class="stars">${estrellasHTML}</div>
+            <p>${comentario}</p>
+            <div class="user">
+                <img src="imagenes/pic-1.png">
+                <div>
+                    <h3>${nombre}</h3>
+                    <span>Cliente</span>
+                </div>
+            </div>
+        `;
+
+        contenedor.appendChild(nuevaResena);
+
+        document.getElementById("formResena").reset();
+        estrellas.forEach(s => s.classList.remove("active"));
+        valorSeleccionado = 0;
+    });
+
+});
+</script>
+
+    
+
+
+        
+        <section class="icons-container">
+            
+            <div class="icons">
+                <img src="imagenes/icon-1.jpg" alt="" />
+                <div class="info">
+                    <h3>Tarjeta</h3>
+                    <span>Pago con tarjeta de crédito o débito</span>
+                </div>
+            </div>
+            
+            <div class="icons">
+                <img src="imagenes/icon-2.jpg" alt="" />
+                <div class="info">
+                    <h3>Banco</h3>
+                    <span>Transferencia bancaria</span>
+                </div>
+            </div>
+        
+            
+        </section>
+    </body>
+</html>
+
